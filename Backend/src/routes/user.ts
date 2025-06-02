@@ -12,38 +12,47 @@ export const userRouter = new Hono<{
     }
 }>();
 
-userRouter.post('/signup', async (c) => {
-    const body = await c.req.json();
-    const {success} = signupInput.safeParse(body);
-    if(!success){
-        c.status(411);
-        return c.json({
-            message: "input not correct"
-        })
+  userRouter.post('/signup', async (c) => {
+  const body = await c.req.json();
+  const { username, name } = body;
+
+  const prisma = new PrismaClient({
+    datasourceUrl: c.env.DATABASE_URL,
+  }).$extends(withAccelerate());
+
+  try {
+    // Check if user already exists
+    let user = await prisma.user.findUnique({
+      where: {
+        username: username,
+      },
+    });
+
+    // If user doesn't exist, create new user
+    if (!user) {
+      user = await prisma.user.create({
+        data: {
+          username: username,
+          name: name,
+        },
+      });
     }
-    const prisma = new PrismaClient({
-      datasourceUrl: c.env.DATABASE_URL,
-    }).$extends(withAccelerate())
-     
-    try{
-      const user = await prisma.user.create({
-        data:{
-             username : body.username,
-             password : body.password,
-             name: body.name
-        }
-      })
-      const jwt = await sign({
-        id: user.id
-      },c.env.JWT_SECRET)
-      return c.text(jwt)
-    }
-    catch(e){
-      c.status(411);
-      return c.text('User already exists with this email')
-    }
-  })
-  
+
+    // Generate JWT token
+    const jwt = await sign(
+      { id: user.id },
+      c.env.JWT_SECRET
+    );
+
+    // Return token
+    return c.json({ token: jwt });
+  } catch (e) {
+    console.error("Signup error:", e);
+    c.status(500);
+    return c.text('Internal Server Error');
+  }
+});
+
 userRouter.post('/signin',async (c)=>{
     const body = await c.req.json();
     const {success} = signinInput.safeParse(body);
@@ -61,7 +70,7 @@ userRouter.post('/signin',async (c)=>{
       const user = await prisma.user.findFirst({
         where: {
           username: body.username,
-          password: body.password
+          // password: body.password
         }
       })
       if(!user){
