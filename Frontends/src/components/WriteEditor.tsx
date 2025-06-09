@@ -6,7 +6,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { Image, Link, Bold, Italic, List } from "lucide-react";
-import { BACKEND_URL } from "@/config";
+import { BACKEND_URL } from "../config";
 
 export const WriteEditor = () => {
   const [title, setTitle] = useState("");

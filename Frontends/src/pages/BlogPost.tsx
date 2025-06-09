@@ -4,7 +4,7 @@ import axios from "axios";
 import { BlogHeader } from "@/components/BlogHeader";
 import { BlogFooter } from "@/components/BlogFooter";
 import { Button } from "@/components/ui/button";
-import { BACKEND_URL } from "@/config";
+import { BACKEND_URL } from "../config";
 import {
   ArrowLeft,
   Heart,

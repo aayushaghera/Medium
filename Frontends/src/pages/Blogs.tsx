@@ -6,7 +6,7 @@ import { BlogFooter } from "@/components/BlogFooter";
 import { BlogCard } from "@/components/BlogCard";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { BACKEND_URL } from "@/config";
+import { BACKEND_URL } from "../config";
 
 const Blogs = () => {
   const [blogPosts, setBlogPosts] = useState([]);
