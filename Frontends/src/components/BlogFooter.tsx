@@ -10,14 +10,14 @@ export const BlogFooter = () => {
           </div>
           
           <div className="flex space-x-8">
-            <a href="/about" className="text-gray-500 hover:text-gray-700 text-sm transition-colors">
-              Terms
+            <a href="/" className="text-gray-500 hover:text-gray-700 text-sm transition-colors">
+              Home
             </a>
-            <a href="/contact" className="text-gray-500 hover:text-gray-700 text-sm transition-colors">
-              Privacy
+            <a href="/blogs" className="text-gray-500 hover:text-gray-700 text-sm transition-colors">
+              Blog
             </a>
-            <a href="/contact" className="text-gray-500 hover:text-gray-700 text-sm transition-colors">
-              Unsubscribe
+            <a href="/About" className="text-gray-500 hover:text-gray-700 text-sm transition-colors">
+              About
             </a>
             <a href="/contact" className="text-gray-500 hover:text-gray-700 text-sm transition-colors">
               Contact
