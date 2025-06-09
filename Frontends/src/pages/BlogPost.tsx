@@ -23,7 +23,7 @@ interface Blog {
    author: {
     name: string | null;
   }
-  date: string;
+  createdAt: string;
   readTime: string;
   image: string;
 }
@@ -119,7 +119,7 @@ const BlogPost = () => {
                   <div className="flex items-center text-sm text-gray-500 space-x-4">
                     <span className="flex items-center">
                       <Calendar className="h-4 w-4 mr-1" />
-                      {post.date}
+                      {new Date(post.createdAt).toLocaleDateString()}
                     </span>
                     <span className="flex items-center">
                       <Clock className="h-4 w-4 mr-1" />

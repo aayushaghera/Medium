@@ -12,7 +12,7 @@ interface BlogPost {
   author: {
     name: string | null;
   }
-  date: string;
+  createdAt: string;
   readTime: string;
   image: string;
   category: string;
@@ -35,7 +35,7 @@ export const BlogCard = ({ post }: BlogCardProps) => {
         />
         <div className="absolute top-4 left-4 z-20">
           <Badge className="bg-white/90 text-slate-700 border-0 shadow-md hover:bg-white">
-            {/* {post.category} */}
+            {post.category}
           </Badge>
         </div>
       </div>
@@ -60,7 +60,8 @@ export const BlogCard = ({ post }: BlogCardProps) => {
             </div>
             <div>
               <div className="font-medium text-slate-800 text-sm">{post.author.name}</div>
-              <div className="text-xs text-slate-500">{post.date} • {post.readTime}</div>
+              <div className="text-xs text-slate-500">{new Date(post.createdAt).toLocaleDateString()}
+ • {post.readTime}</div>
             </div>
           </div>
           
