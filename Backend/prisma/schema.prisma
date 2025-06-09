@@ -21,10 +21,13 @@ model User {
 }
 
 model Blog {
-  id Int @id @default(autoincrement())
-  content String
-  title String
-  published Boolean @default(false)
-  author User @relation(fields: [authorId],references: [id])
-  authorId Int
+  id         Int      @id @default(autoincrement())
+  content    String
+  title      String
+  category   String?
+  readTime   String?
+  published  Boolean  @default(false)
+  createdAt  DateTime @default(now())
+  author     User     @relation(fields: [authorId], references: [id])
+  authorId   Int
 }
