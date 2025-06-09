@@ -5,9 +5,7 @@ import { BlogHeader } from "@/components/BlogHeader";
 import { BlogFooter } from "@/components/BlogFooter";
 import { BlogCard } from "@/components/BlogCard";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
-import { Search, Filter } from "lucide-react";
 import { BACKEND_URL } from "@/config";
 
 const Blogs = () => {
@@ -58,16 +56,7 @@ const Blogs = () => {
 
           {/* Search and Filter */}
           <div className="mb-12">
-            <div className="flex flex-col md:flex-row gap-6 mb-8">
-              <div className="flex-1 relative">
-                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-400" />
-                <Input placeholder="Search articles..." className="pl-10 py-3" />
-              </div>
-              <Button variant="outline" className="border-gray-200 hover:bg-gray-50">
-                <Filter className="h-4 w-4 mr-2" />
-                Filter
-              </Button>
-            </div>
+        
 
             {/* Category filters */}
             <div className="flex flex-wrap gap-3">
