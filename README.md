@@ -25,7 +25,7 @@ A full-stack Medium-like blogging platform built with modern web technologies.
 ### 1. Clone the Repository
 
 ```bash
-git clone <your-repo-url>
+git clone <https://github.com/aayushaghera/Medium.git>
 cd mediumclone
 ```
 
